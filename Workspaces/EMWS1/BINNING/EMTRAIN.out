@@ -1,0 +1,36 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+          Measurement    Frequency
+Role         Level         Count
+
+ID         INTERVAL           1   
+INPUT      BINARY             1   
+INPUT      INTERVAL          12   
+INPUT      NOMINAL            1   
+TARGET     BINARY             1   
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+       Input
+Obs    Variable       Group Variable
+
+  1    INDELINQ       GRP_INDELINQ   
+  2    INDEROG        GRP_INDEROG    
+  3    JOB            GRP_JOB        
+  4    LOG_CLAGE      GRP_LOG_CLAGE  
+  5    LOG_CLNO       GRP_LOG_CLNO   
+  6    LOG_DEBTINC    GRP_LOG_DEBTINC
+  7    LOG_DELINQ     GRP_LOG_DELINQ 
+  8    LOG_DEROG      GRP_LOG_DEROG  
+  9    LOG_LOAN       GRP_LOG_LOAN   
+ 10    LOG_MORTDUE    GRP_LOG_MORTDUE
+ 11    LOG_VALUE      GRP_LOG_VALUE  
+ 12    LOG_YOJ        GRP_LOG_YOJ    
+ 13    NINQ           GRP_NINQ       
+ 14    REASON         GRP_REASON     

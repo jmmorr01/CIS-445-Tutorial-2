@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  MethodInterval="MEAN" MethodClass="COUNT" MethodTargetInterval="NONE" MethodTargetClass="NONE"
+ ABWTuning="9" AHUBERTuning="1.5" AWAVETuning="6.2831853072" SpacingProportion="90"
+ DefaultChar="" DefaultNum="." RandomSeed="12345" Normalize="Y" ImputeNoMissing="N"
+ MaxPctMissing="50" ValidateTestMissing="N" DistributionMissing="N" LeafSize="5" Maxbranch="2"
+ Maxdepth="6" MinCatSize="5" Nrules="5" Nsurrs="2" Splitsize="." Indicator="UNIQUE"
+ IndicatorRole="INPUT" ReplaceVariable="N" HideVariable="Y" IndicatorSource="MISSING"
+ ForceRun="N" RunAction="Train" Component="Impute" RawCreateTime="1856129449.8" CreateTime="25OCT2018:23:30:50"
+ RunId="df0c6d0a-fde4-4f65-8822-1be8ec9e99e2" RawLastTimeRun="1856131793.9" RawRunTime="10.235000134"
+ LastTimeRun="26OCT2018:00:09:54" RunTime="0 Hr. 0 Min. 10.24 Sec.">
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES/>
+</_ROOT_>

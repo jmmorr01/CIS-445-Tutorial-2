@@ -1,0 +1,158 @@
+*------------------------------------------------------------*
+User:                jmmorr01
+Date:                October 26, 2018
+Time:                00:02:36
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+          Measurement    Frequency
+ Role        Level         Count
+ 
+TARGET      BINARY           1
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Score Input Variables
+ 
+                                                                                                  Used in
+Variable                                                                              Variable     Score
+  Name      Role        Creator                   Comment                    Label     Hidden      Code
+ 
+BAD         TARGET                                                                       N           N
+CLAGE       INPUT                                                                        Y           Y
+CLNO        INPUT                                                                        Y           Y
+DEBTINC     INPUT                                                                        Y           Y
+DELINQ      INPUT                                                                        Y           Y
+DEROG       INPUT                                                                        Y           Y
+JOB         REJECTED               Reg3: Rejected using forward selection                N           Y
+LOAN        INPUT                                                                        Y           Y
+MORTDUE     INPUT                                                                        Y           Y
+NINQ        REJECTED               Reg3: Rejected using forward selection                N           Y
+VALUE       INPUT                                                                        Y           Y
+ 
+ 
+ 
+ 
+Score Output Variables
+ 
+Variable Name          Function          Creator    Label
+ 
+EM_CLASSIFICATION      CLASSIFICATION    Score      Prediction for BAD
+EM_EVENTPROBABILITY    PREDICT           Score      Probability for level 1 of BAD
+EM_PROBABILITY         PREDICT           Score      Probability of Classification
+GRP_INDELINQ           TRANSFORM         BINNING    Grouped: INDELINQ
+GRP_INDEROG            TRANSFORM         BINNING    Grouped: INDEROG
+GRP_JOB                TRANSFORM         BINNING    Grouped: JOB
+GRP_LOG_CLAGE          TRANSFORM         BINNING    Grouped: Transformed CLAGE
+GRP_LOG_CLNO           TRANSFORM         BINNING    Grouped: Transformed CLNO
+GRP_LOG_DEBTINC        TRANSFORM         BINNING    Grouped: Transformed DEBTINC
+GRP_LOG_DELINQ         TRANSFORM         BINNING    Grouped: Transformed DELINQ
+GRP_LOG_DEROG          TRANSFORM         BINNING    Grouped: Transformed DEROG
+GRP_LOG_LOAN           TRANSFORM         BINNING    Grouped: Transformed LOAN
+GRP_LOG_MORTDUE        TRANSFORM         BINNING    Grouped: Transformed MORTDUE
+GRP_LOG_VALUE          TRANSFORM         BINNING    Grouped: Transformed VALUE
+GRP_NINQ               TRANSFORM         BINNING    Grouped: NINQ
+INDELINQ               TRANSFORM         Trans
+INDEROG                TRANSFORM         Trans
+I_BAD                  CLASSIFICATION    Reg3       Into: BAD
+LOG_CLAGE              TRANSFORM         Trans      Transformed CLAGE
+LOG_CLNO               TRANSFORM         Trans      Transformed CLNO
+LOG_DEBTINC            TRANSFORM         Trans      Transformed DEBTINC
+LOG_DELINQ             TRANSFORM         Trans      Transformed DELINQ
+LOG_DEROG              TRANSFORM         Trans      Transformed DEROG
+LOG_LOAN               TRANSFORM         Trans      Transformed LOAN
+LOG_MORTDUE            TRANSFORM         Trans      Transformed MORTDUE
+LOG_VALUE              TRANSFORM         Trans      Transformed VALUE
+P_BAD0                 PREDICT           Reg3       Predicted: BAD=0
+P_BAD1                 PREDICT           Reg3       Predicted: BAD=1
+U_BAD                  CLASSIFICATION    Reg3       Unnormalized Into: BAD
+_WARN_                 ASSESS            Reg3       Warnings
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Class Variable Summary Statistics
+ 
+Data Role=SCORE Output Type=CLASSIFICATION
+ 
+            Numeric    Formatted    Frequency
+Variable     Value       Value        Count      Percent
+ 
+ I_BAD         .           0           5090      85.4027
+ I_BAD         .           1            870      14.5973
+ 
+ 
+Data Role=TEST Output Type=CLASSIFICATION
+ 
+            Numeric    Formatted    Frequency
+Variable     Value       Value        Count      Percent
+ 
+ I_BAD         .           0           1495      83.5196
+ I_BAD         .           1            295      16.4804
+ 
+ 
+Data Role=TRAIN Output Type=CLASSIFICATION
+ 
+            Numeric    Formatted    Frequency
+Variable     Value       Value        Count      Percent
+ 
+ I_BAD         .           0           2015      84.5928
+ I_BAD         .           1            367      15.4072
+ 
+ 
+Data Role=VALIDATE Output Type=CLASSIFICATION
+ 
+            Numeric    Formatted    Frequency
+Variable     Value       Value        Count      Percent
+ 
+ I_BAD         .           0           1479      82.7181
+ I_BAD         .           1            309      17.2819
+ 
+ 
+ 
+ 
+Interval Variable Summary Statistics
+ 
+Variable Name=P_BAD0
+ 
+Statistics    Label                   TRAIN    VALIDATE       TEST      SCORE
+ 
+  MEAN        Mean                     0.80        0.79       0.80       0.81
+  STD         Standard Deviation       0.28        0.29       0.28       0.27
+  N           Non Missing           2382.00     1788.00    1790.00    5960.00
+  MIN         Minimum                  0.00        0.00       0.00       0.00
+  P25         25th Percentile          0.74        0.70       0.75       0.78
+  MEDIAN      Median                   0.94        0.94       0.94       0.95
+  P75         75th Percentile          0.98        0.98       0.98       0.99
+  MAX         Maximum                  1.00        1.00       1.00       1.00
+ 
+ 
+Variable Name=P_BAD1
+ 
+Statistics    Label                   TRAIN    VALIDATE       TEST      SCORE
+ 
+  MEAN        Mean                     0.20        0.21       0.20       0.19
+  STD         Standard Deviation       0.28        0.29       0.28       0.27
+  N           Non Missing           2382.00     1788.00    1790.00    5960.00
+  MIN         Minimum                  0.00        0.00       0.00       0.00
+  P25         25th Percentile          0.02        0.02       0.02       0.01
+  MEDIAN      Median                   0.06        0.06       0.06       0.05
+  P75         75th Percentile          0.26        0.30       0.25       0.22
+  MAX         Maximum                  1.00        1.00       1.00       1.00

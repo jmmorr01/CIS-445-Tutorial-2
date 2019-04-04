@@ -1,0 +1,162 @@
+*------------------------------------------------------------*
+User:                jmmorr01
+Date:                October 26, 2018
+Time:                00:06:52
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+          Measurement    Frequency
+ Role        Level         Count
+ 
+INPUT      BINARY             1
+INPUT      INTERVAL          10
+INPUT      NOMINAL            1
+TARGET     BINARY             1
+ 
+ 
+ 
+ 
+ 
+The DMINE Procedure
+ 
+           R-Squares for Target Variable: BAD
+ 
+Effect                DF        R-Square
+ 
+AOV16: DELINQ         13        0.133471
+Var:   DELINQ          1        0.124643
+AOV16: NINQ           14        0.044307
+AOV16: CLAGE           8        0.040097
+Var:   NINQ            1        0.035231
+Class: JOB*REASON     19        0.035034
+Group: JOB*REASON      8        0.034599
+AOV16: LOAN           15        0.025579
+Var:   CLAGE           1        0.024544
+AOV16: MORTDUE        12        0.021173
+AOV16: CLNO           14        0.020226
+AOV16: YOJ            15        0.018947
+Class: JOB             6        0.016209
+Group: JOB             3        0.016076
+AOV16: VALUE           8        0.015476
+Var:   YOJ             1        0.005351
+Var:   LOAN            1        0.003537    R2 < MINR2
+Class: REASON          2        0.003016    R2 < MINR2
+Var:   MORTDUE         1        0.001246    R2 < MINR2
+Var:   VALUE           1     0.000087273    R2 < MINR2
+Var:   CLNO            1     0.000073717    R2 < MINR2
+ 
+ 
+ 
+ 
+ 
+The DMINE Procedure
+ 
+                                  Effects Chosen for Target: BAD
+ 
+                                                                             Sum of      Error Mean
+Effect                DF        R-Square         F Value    p-Value         Squares          Square
+ 
+Var:   DELINQ          1        0.124643      338.891140     <.0001       47.399192        0.139866
+Var:   NINQ            1        0.029163       81.988254     <.0001       11.089955        0.135263
+Var:   CLAGE           1        0.019864       57.164020     <.0001        7.553829        0.132143
+Group: JOB             3        0.009971        9.668917     <.0001        3.791575        0.130714
+Var:   YOJ             1        0.003485       10.179242     0.0014        1.325442        0.130210
+ 
+ 
+ 
+ 
+ 
+The DMINE Procedure
+ 
+       The Final ANOVA Table for Target: BAD
+ 
+                                              Sum of
+Effect            DF        R-Square         Squares
+ 
+Model              7        0.187126       71.159992
+Error           2374               .      309.119185
+Total           2381               .      380.279177
+ 
+ 
+ 
+ 
+ 
+The DMINE Procedure
+ 
+         Estimating logistic
+ 
+ Iter           Alpha            Beta
+ 
+    0       -2.237943        4.294609
+    1       -3.521304        6.308965
+    2       -3.923537        6.903637
+    3       -3.949239        6.940737
+    4       -3.949328        6.940864
+    4       -3.949328        6.940864
+ 
+ 
+ 
+ 
+ 
+The DMINE Procedure
+ 
+Classification Table for CUTOFF = 0.5000
+ 
+         Accuracy =  82.96
+ 
+                      Predicted
+Observed               1           0
+ 
+1                    124         351
+0                     55        1852
+Missing                0           0
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+-------------------------------------------------------------------
+Summary of Variable Selection from Training
+-------------------------------------------------------------------
+ 
+ 
+Target Name : BAD
+Target Level : BINARY
+Variable Selection Model : R-Square
+ 
+Total number of inputs : 12
+Total number of used inputs : 12
+Total number of unused inputs : 0
+Total number of rejected inputs : 8
+ 
+Maximum missing percentage : 10
+NOTE: 2 variables have been rejected by maximum missing percentage
+ 
+Maximum class level : 100
+NOTE:There is no rejected variable by maximum class level
+ 
+NOTE: 1 group variable has been created
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

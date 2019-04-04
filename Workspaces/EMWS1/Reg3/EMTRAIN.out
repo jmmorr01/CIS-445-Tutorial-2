@@ -1,0 +1,656 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+            Measurement    Frequency
+Role           Level         Count
+
+INPUT        ORDINAL           14   
+REJECTED     BINARY             1   
+REJECTED     INTERVAL          12   
+REJECTED     NOMINAL            1   
+TARGET       BINARY             1   
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Model Events
+
+                                  Number
+                   Measurement      of
+Target    Event       Level       Levels      Order       Label
+
+ BAD        1        BINARY          2      Descending         
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Predicted and decision variables
+
+Type         Variable    Label
+
+TARGET        BAD                        
+PREDICTED     P_BAD1     Predicted: BAD=1
+RESIDUAL      R_BAD1     Residual: BAD=1 
+PREDICTED     P_BAD0     Predicted: BAD=0
+RESIDUAL      R_BAD0     Residual: BAD=0 
+FROM          F_BAD      From: BAD       
+INTO          I_BAD      Into: BAD       
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+                Model Information
+
+Training Data Set              WORK.EM_DMREG.VIEW
+DMDB Catalog                   WORK.REG3_DMDB    
+Target Variable                BAD               
+Target Measurement Level       Ordinal           
+Number of Target Categories    2                 
+Error                          MBernoulli        
+Link Function                  Logit             
+Number of Model Parameters     43                
+Number of Observations         2382              
+
+
+           Target Profile
+ 
+ Ordered                      Total
+   Value          BAD     Frequency
+
+       1            1           475
+       2            0          1907
+
+
+
+
+Forward Selection Procedure
+
+Step 0: The following effects were entered.
+
+Intercept  GRP_INDELINQ  GRP_INDEROG  GRP_JOB  GRP_LOG_CLAGE  GRP_LOG_CLNO  GRP_LOG_DEBTINC  GRP_LOG_DELINQ  GRP_LOG_DEROG  GRP_LOG_LOAN  GRP_LOG_MORTDUE  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates              30
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                       1190.0151875
+Max Abs Gradient Element                 230.79764903                                                       
+
+
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+
+   1            0           2              0        764.03125        426.0       146.4         0        0.867
+   2            0           3              0        705.79854      58.2327     16.4416         0        1.088
+   3            0           4              0        701.82057       3.9780      2.0071         0        1.081
+   4            0           5              0        701.74936       0.0712      0.0409         0        1.014
+   5            0           6              0        701.74932     0.000036    0.000021         0        1.000
+
+                                            Optimization Results
+
+Iterations                                          5  Function Calls                                      8
+Hessian Calls                                       6  Active Constraints                                  0
+Objective Function                       701.74932241  Max Abs Gradient Element                 0.0000210939
+Ridge                                               0  Actual Over Pred Change                  1.0004088009
+
+Convergence criterion (GCONV=1E-6) satisfied.                                                     
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+   2380.030        1403.499       976.5317       29         <.0001
+
+
+            Type 3 Analysis of Effects
+ 
+                                 Wald
+Effect               DF    Chi-Square    Pr > ChiSq
+
+GRP_INDELINQ          1      102.8695        <.0001
+GRP_INDEROG           1       42.5438        <.0001
+GRP_JOB               6       30.9352        <.0001
+GRP_LOG_CLAGE         4       66.5392        <.0001
+GRP_LOG_CLNO          4       16.0733        0.0029
+GRP_LOG_DEBTINC       4      370.6690        <.0001
+GRP_LOG_DELINQ        1        1.9851        0.1589
+GRP_LOG_DEROG         1       14.0076        0.0002
+GRP_LOG_LOAN          3        4.4291        0.2187
+GRP_LOG_MORTDUE       4       20.6282        0.0004
+
+
+                       Analysis of Maximum Likelihood Estimates
+ 
+                                       Standard          Wald
+Parameter            DF    Estimate       Error    Chi-Square    Pr > ChiSq    Exp(Est)
+
+Intercept             1     -1.3740      0.1871         53.94        <.0001       0.253
+GRP_INDELINQ    3     1     -0.8502      0.0838        102.87        <.0001       0.427
+GRP_INDEROG     3     1     -0.6192      0.0949         42.54        <.0001       0.538
+GRP_JOB         1     1     -1.3352      0.4000         11.14        0.0008       0.263
+GRP_JOB         2     1      0.2512      0.1520          2.73        0.0983       1.286
+GRP_JOB         3     1    -0.00940      0.1876          0.00        0.9601       0.991
+GRP_JOB         4     1     -0.5862      0.2039          8.26        0.0040       0.556
+GRP_JOB         5     1      0.4355      0.1926          5.11        0.0238       1.546
+GRP_JOB         6     1      0.5759      0.3044          3.58        0.0585       1.779
+GRP_LOG_CLAGE   1     1      0.3718      0.4887          0.58        0.4468       1.450
+GRP_LOG_CLAGE   2     1      0.7710      0.1685         20.93        <.0001       2.162
+GRP_LOG_CLAGE   3     1      0.1960      0.1768          1.23        0.2676       1.216
+GRP_LOG_CLAGE   4     1     -0.4804      0.1808          7.06        0.0079       0.619
+GRP_LOG_CLNO    1     1      2.5646      0.6770         14.35        0.0002      12.995
+GRP_LOG_CLNO    2     1     -0.5966      0.1988          9.00        0.0027       0.551
+GRP_LOG_CLNO    3     1     -0.7258      0.2158         11.31        0.0008       0.484
+GRP_LOG_CLNO    4     1     -0.7383      0.2175         11.53        0.0007       0.478
+GRP_LOG_DEBTINC 1     1      2.2809      0.1195        364.12        <.0001       9.785
+GRP_LOG_DEBTINC 2     1     -1.0135      0.1845         30.18        <.0001       0.363
+GRP_LOG_DEBTINC 3     1     -0.9232      0.1786         26.71        <.0001       0.397
+GRP_LOG_DEBTINC 4     1     -0.6348      0.1697         14.00        0.0002       0.530
+GRP_LOG_DELINQ  1     1     -0.3315      0.2353          1.99        0.1589       0.718
+GRP_LOG_DEROG   1     1     -0.6978      0.1864         14.01        0.0002       0.498
+GRP_LOG_LOAN    2     1      0.0899      0.1232          0.53        0.4654       1.094
+GRP_LOG_LOAN    3     1      0.1169      0.1199          0.95        0.3295       1.124
+GRP_LOG_LOAN    4     1      0.0647      0.1269          0.26        0.6102       1.067
+GRP_LOG_MORTDUE 1     1      0.6795      0.2123         10.25        0.0014       1.973
+GRP_LOG_MORTDUE 2     1      0.1295      0.1333          0.94        0.3312       1.138
+GRP_LOG_MORTDUE 3     1     -0.2869      0.1401          4.19        0.0406       0.751
+GRP_LOG_MORTDUE 4     1     -0.5364      0.1463         13.43        0.0002       0.585
+
+
+       Odds Ratio Estimates
+                 
+                             Point
+Effect                    Estimate
+
+GRP_INDELINQ    3 vs 4       0.183
+GRP_INDEROG     3 vs 4       0.290
+GRP_JOB         1 vs 7       0.135
+GRP_JOB         2 vs 7       0.659
+GRP_JOB         3 vs 7       0.508
+GRP_JOB         4 vs 7       0.285
+GRP_JOB         5 vs 7       0.792
+GRP_JOB         6 vs 7       0.912
+GRP_LOG_CLAGE   1 vs 5       3.422
+GRP_LOG_CLAGE   2 vs 5       5.100
+GRP_LOG_CLAGE   3 vs 5       2.870
+GRP_LOG_CLAGE   4 vs 5       1.459
+GRP_LOG_CLNO    1 vs 5      21.508
+GRP_LOG_CLNO    2 vs 5       0.911
+GRP_LOG_CLNO    3 vs 5       0.801
+GRP_LOG_CLNO    4 vs 5       0.791
+GRP_LOG_DEBTINC 1 vs 5       7.317
+GRP_LOG_DEBTINC 2 vs 5       0.271
+GRP_LOG_DEBTINC 3 vs 5       0.297
+GRP_LOG_DEBTINC 4 vs 5       0.396
+GRP_LOG_DELINQ  1 vs 3       0.515
+GRP_LOG_DEROG   1 vs 3       0.248
+GRP_LOG_LOAN    2 vs 5       1.435
+GRP_LOG_LOAN    3 vs 5       1.475
+GRP_LOG_LOAN    4 vs 5       1.400
+GRP_LOG_MORTDUE 1 vs 5       1.945
+GRP_LOG_MORTDUE 2 vs 5       1.122
+GRP_LOG_MORTDUE 3 vs 5       0.740
+GRP_LOG_MORTDUE 4 vs 5       0.577
+
+
+Step 1: Effect GRP_LOG_VALUE entered.
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates              34
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                       1190.0151875
+Max Abs Gradient Element                 230.79764903                                                       
+
+
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+
+   1            0           2              0        736.20208        453.8       139.0         0        0.883
+   2            0           3              0        677.27849      58.9236     19.7305         0        1.121
+   3            0           4              0        671.97951       5.2990      2.6524         0        1.098
+   4            0           5              0        671.83448       0.1450      0.0791         0        1.023
+   5            0           6              0        671.83428     0.000199    0.000108         0        1.001
+
+                                            Optimization Results
+
+Iterations                                          5  Function Calls                                      8
+Hessian Calls                                       6  Active Constraints                                  0
+Objective Function                       671.83427817  Max Abs Gradient Element                 0.0001075648
+Ridge                                               0  Actual Over Pred Change                  1.0012281411
+
+Convergence criterion (GCONV=1E-6) satisfied.                                                     
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+   2380.030        1343.669      1036.3618       33         <.0001
+
+
+            Type 3 Analysis of Effects
+ 
+                                 Wald
+Effect               DF    Chi-Square    Pr > ChiSq
+
+GRP_INDELINQ          1       94.7062        <.0001
+GRP_INDEROG           1       36.8934        <.0001
+GRP_JOB               6       32.6852        <.0001
+GRP_LOG_CLAGE         4       67.2830        <.0001
+GRP_LOG_CLNO          4       15.4412        0.0039
+GRP_LOG_DEBTINC       4      335.3167        <.0001
+GRP_LOG_DELINQ        1        2.5266        0.1119
+GRP_LOG_DEROG         1       17.0586        <.0001
+GRP_LOG_LOAN          3        6.1800        0.1032
+GRP_LOG_MORTDUE       4        9.0139        0.0608
+GRP_LOG_VALUE         4       33.5498        <.0001
+
+
+                       Analysis of Maximum Likelihood Estimates
+ 
+                                       Standard          Wald
+Parameter            DF    Estimate       Error    Chi-Square    Pr > ChiSq    Exp(Est)
+
+Intercept             1     -0.8000      0.2440         10.75        0.0010       0.449
+GRP_INDELINQ    3     1     -0.8438      0.0867         94.71        <.0001       0.430
+GRP_INDEROG     3     1     -0.5936      0.0977         36.89        <.0001       0.552
+GRP_JOB         1     1     -1.5611      0.4552         11.76        0.0006       0.210
+GRP_JOB         2     1      0.3155      0.1592          3.93        0.0475       1.371
+GRP_JOB         3     1      0.0491      0.1941          0.06        0.8005       1.050
+GRP_JOB         4     1     -0.6130      0.2143          8.18        0.0042       0.542
+GRP_JOB         5     1      0.4753      0.2000          5.65        0.0175       1.608
+GRP_JOB         6     1      0.5907      0.3163          3.49        0.0619       1.805
+GRP_LOG_CLAGE   1     1      0.5422      0.4908          1.22        0.2693       1.720
+GRP_LOG_CLAGE   2     1      0.7524      0.1700         19.59        <.0001       2.122
+GRP_LOG_CLAGE   3     1      0.1681      0.1803          0.87        0.3511       1.183
+GRP_LOG_CLAGE   4     1     -0.5643      0.1842          9.39        0.0022       0.569
+GRP_LOG_CLNO    1     1      2.5680      0.7140         12.94        0.0003      13.039
+GRP_LOG_CLNO    2     1     -0.6492      0.2074          9.79        0.0018       0.522
+GRP_LOG_CLNO    3     1     -0.7365      0.2263         10.60        0.0011       0.479
+GRP_LOG_CLNO    4     1     -0.7249      0.2271         10.19        0.0014       0.484
+GRP_LOG_DEBTINC 1     1      2.2286      0.1229        328.64        <.0001       9.287
+GRP_LOG_DEBTINC 2     1     -1.0598      0.1927         30.24        <.0001       0.347
+GRP_LOG_DEBTINC 3     1     -0.8747      0.1830         22.85        <.0001       0.417
+GRP_LOG_DEBTINC 4     1     -0.6193      0.1756         12.43        0.0004       0.538
+GRP_LOG_DELINQ  1     1     -0.4099      0.2579          2.53        0.1119       0.664
+GRP_LOG_DEROG   1     1     -0.8120      0.1966         17.06        <.0001       0.444
+GRP_LOG_LOAN    2     1      0.1073      0.1296          0.69        0.4077       1.113
+GRP_LOG_LOAN    3     1      0.1315      0.1254          1.10        0.2941       1.141
+GRP_LOG_LOAN    4     1      0.1017      0.1321          0.59        0.4411       1.107
+GRP_LOG_MORTDUE 1     1      0.6399      0.2434          6.91        0.0086       1.896
+GRP_LOG_MORTDUE 2     1      0.1755      0.1703          1.06        0.3027       1.192
+GRP_LOG_MORTDUE 3     1     -0.1664      0.1614          1.06        0.3028       0.847
+GRP_LOG_MORTDUE 4     1     -0.4117      0.1756          5.50        0.0191       0.663
+GRP_LOG_VALUE   1     1      3.4164      0.6653         26.37        <.0001      30.458
+GRP_LOG_VALUE   2     1     -0.8415      0.2430         12.00        0.0005       0.431
+GRP_LOG_VALUE   3     1     -0.8761      0.2213         15.67        <.0001       0.416
+GRP_LOG_VALUE   4     1     -1.2225      0.2318         27.81        <.0001       0.295
+
+
+       Odds Ratio Estimates
+                 
+                             Point
+Effect                    Estimate
+
+GRP_INDELINQ    3 vs 4       0.185
+GRP_INDEROG     3 vs 4       0.305
+GRP_JOB         1 vs 7       0.100
+GRP_JOB         2 vs 7       0.652
+GRP_JOB         3 vs 7       0.499
+GRP_JOB         4 vs 7       0.258
+GRP_JOB         5 vs 7       0.765
+GRP_JOB         6 vs 7       0.858
+GRP_LOG_CLAGE   1 vs 5       4.223
+GRP_LOG_CLAGE   2 vs 5       5.211
+GRP_LOG_CLAGE   3 vs 5       2.905
+GRP_LOG_CLAGE   4 vs 5       1.397
+GRP_LOG_CLNO    1 vs 5      20.600
+GRP_LOG_CLNO    2 vs 5       0.825
+GRP_LOG_CLNO    3 vs 5       0.756
+GRP_LOG_CLNO    4 vs 5       0.765
+GRP_LOG_DEBTINC 1 vs 5       6.708
+GRP_LOG_DEBTINC 2 vs 5       0.250
+GRP_LOG_DEBTINC 3 vs 5       0.301
+GRP_LOG_DEBTINC 4 vs 5       0.389
+GRP_LOG_DELINQ  1 vs 3       0.440
+GRP_LOG_DEROG   1 vs 3       0.197
+GRP_LOG_LOAN    2 vs 5       1.565
+GRP_LOG_LOAN    3 vs 5       1.603
+GRP_LOG_LOAN    4 vs 5       1.556
+GRP_LOG_MORTDUE 1 vs 5       2.404
+GRP_LOG_MORTDUE 2 vs 5       1.511
+GRP_LOG_MORTDUE 3 vs 5       1.074
+GRP_LOG_MORTDUE 4 vs 5       0.840
+GRP_LOG_VALUE   1 vs 5      49.042
+GRP_LOG_VALUE   2 vs 5       0.694
+GRP_LOG_VALUE   3 vs 5       0.670
+GRP_LOG_VALUE   4 vs 5       0.474
+
+
+Step 2: Effect GRP_NINQ entered.
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates              37
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                       1190.0151875
+Max Abs Gradient Element                 230.79764903                                                       
+
+
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+
+   1            0           2              0        729.15008        460.9       140.3         0        0.886
+   2            0           3              0        668.55423      60.5958     20.7856         0        1.126
+   3            0           4              0        662.84770       5.7065      2.8606         0        1.101
+   4            0           5              0        662.68476       0.1629      0.0898         0        1.024
+   5            0           6              0        662.68453     0.000228    0.000126         0        1.001
+
+                                            Optimization Results
+
+Iterations                                          5  Function Calls                                      8
+Hessian Calls                                       6  Active Constraints                                  0
+Objective Function                       662.68453374  Max Abs Gradient Element                 0.0001262036
+Ridge                                               0  Actual Over Pred Change                  1.0012224822
+
+Convergence criterion (GCONV=1E-6) satisfied.                                                     
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+   2380.030        1325.369      1054.6613       36         <.0001
+
+
+            Type 3 Analysis of Effects
+ 
+                                 Wald
+Effect               DF    Chi-Square    Pr > ChiSq
+
+GRP_INDELINQ          1       99.1692        <.0001
+GRP_INDEROG           1       31.2848        <.0001
+GRP_JOB               6       32.3522        <.0001
+GRP_LOG_CLAGE         4       59.6932        <.0001
+GRP_LOG_CLNO          4       15.9810        0.0030
+GRP_LOG_DEBTINC       4      318.9665        <.0001
+GRP_LOG_DELINQ        1        1.3137        0.2517
+GRP_LOG_DEROG         1       20.6804        <.0001
+GRP_LOG_LOAN          3        7.9963        0.0461
+GRP_LOG_MORTDUE       4       11.1979        0.0244
+GRP_LOG_VALUE         4       32.9853        <.0001
+GRP_NINQ              3       18.6455        0.0003
+
+
+                       Analysis of Maximum Likelihood Estimates
+ 
+                                       Standard          Wald
+Parameter            DF    Estimate       Error    Chi-Square    Pr > ChiSq    Exp(Est)
+
+Intercept             1     -0.6396      0.2486          6.62        0.0101       0.527
+GRP_INDELINQ    3     1     -0.8778      0.0881         99.17        <.0001       0.416
+GRP_INDEROG     3     1     -0.5528      0.0988         31.28        <.0001       0.575
+GRP_JOB         1     1     -1.5735      0.4554         11.94        0.0006       0.207
+GRP_JOB         2     1      0.2861      0.1607          3.17        0.0750       1.331
+GRP_JOB         3     1      0.0472      0.1956          0.06        0.8094       1.048
+GRP_JOB         4     1     -0.6273      0.2156          8.46        0.0036       0.534
+GRP_JOB         5     1      0.4629      0.2019          5.26        0.0219       1.589
+GRP_JOB         6     1      0.5331      0.3238          2.71        0.0996       1.704
+GRP_LOG_CLAGE   1     1      0.4885      0.4832          1.02        0.3120       1.630
+GRP_LOG_CLAGE   2     1      0.7155      0.1698         17.75        <.0001       2.045
+GRP_LOG_CLAGE   3     1      0.1891      0.1798          1.11        0.2930       1.208
+GRP_LOG_CLAGE   4     1     -0.5372      0.1839          8.53        0.0035       0.584
+GRP_LOG_CLNO    1     1      2.7346      0.7076         14.94        0.0001      15.403
+GRP_LOG_CLNO    2     1     -0.6115      0.2062          8.80        0.0030       0.543
+GRP_LOG_CLNO    3     1     -0.7928      0.2262         12.29        0.0005       0.453
+GRP_LOG_CLNO    4     1     -0.7367      0.2259         10.63        0.0011       0.479
+GRP_LOG_DEBTINC 1     1      2.2103      0.1247        314.10        <.0001       9.118
+GRP_LOG_DEBTINC 2     1     -0.9672      0.1975         23.98        <.0001       0.380
+GRP_LOG_DEBTINC 3     1     -0.9141      0.1862         24.09        <.0001       0.401
+GRP_LOG_DEBTINC 4     1     -0.6210      0.1771         12.30        0.0005       0.537
+GRP_LOG_DELINQ  1     1     -0.2960      0.2582          1.31        0.2517       0.744
+GRP_LOG_DEROG   1     1     -0.9039      0.1988         20.68        <.0001       0.405
+GRP_LOG_LOAN    2     1      0.1639      0.1313          1.56        0.2122       1.178
+GRP_LOG_LOAN    3     1      0.1583      0.1262          1.57        0.2099       1.172
+GRP_LOG_LOAN    4     1      0.0681      0.1337          0.26        0.6108       1.070
+GRP_LOG_MORTDUE 1     1      0.7265      0.2456          8.75        0.0031       2.068
+GRP_LOG_MORTDUE 2     1      0.1946      0.1721          1.28        0.2582       1.215
+GRP_LOG_MORTDUE 3     1     -0.1866      0.1627          1.32        0.2514       0.830
+GRP_LOG_MORTDUE 4     1     -0.4564      0.1771          6.64        0.0100       0.634
+GRP_LOG_VALUE   1     1      3.3668      0.6551         26.41        <.0001      28.987
+GRP_LOG_VALUE   2     1     -0.9023      0.2429         13.79        0.0002       0.406
+GRP_LOG_VALUE   3     1     -0.9104      0.2208         17.00        <.0001       0.402
+GRP_LOG_VALUE   4     1     -1.1449      0.2304         24.70        <.0001       0.318
+GRP_NINQ        1     1     -0.3147      0.1186          7.04        0.0080       0.730
+GRP_NINQ        2     1     -0.1832      0.1338          1.87        0.1709       0.833
+GRP_NINQ        3     1     -0.0914      0.1557          0.34        0.5574       0.913
+
+
+       Odds Ratio Estimates
+                 
+                             Point
+Effect                    Estimate
+
+GRP_INDELINQ    3 vs 4       0.173
+GRP_INDEROG     3 vs 4       0.331
+GRP_JOB         1 vs 7       0.087
+GRP_JOB         2 vs 7       0.557
+GRP_JOB         3 vs 7       0.439
+GRP_JOB         4 vs 7       0.223
+GRP_JOB         5 vs 7       0.665
+GRP_JOB         6 vs 7       0.713
+GRP_LOG_CLAGE   1 vs 5       3.836
+GRP_LOG_CLAGE   2 vs 5       4.814
+GRP_LOG_CLAGE   3 vs 5       2.844
+GRP_LOG_CLAGE   4 vs 5       1.376
+GRP_LOG_CLNO    1 vs 5      27.886
+GRP_LOG_CLNO    2 vs 5       0.982
+GRP_LOG_CLNO    3 vs 5       0.819
+GRP_LOG_CLNO    4 vs 5       0.867
+GRP_LOG_DEBTINC 1 vs 5       6.809
+GRP_LOG_DEBTINC 2 vs 5       0.284
+GRP_LOG_DEBTINC 3 vs 5       0.299
+GRP_LOG_DEBTINC 4 vs 5       0.401
+GRP_LOG_DELINQ  1 vs 3       0.553
+GRP_LOG_DEROG   1 vs 3       0.164
+GRP_LOG_LOAN    2 vs 5       1.740
+GRP_LOG_LOAN    3 vs 5       1.731
+GRP_LOG_LOAN    4 vs 5       1.581
+GRP_LOG_MORTDUE 1 vs 5       2.731
+GRP_LOG_MORTDUE 2 vs 5       1.604
+GRP_LOG_MORTDUE 3 vs 5       1.096
+GRP_LOG_MORTDUE 4 vs 5       0.837
+GRP_LOG_VALUE   1 vs 5      43.645
+GRP_LOG_VALUE   2 vs 5       0.611
+GRP_LOG_VALUE   3 vs 5       0.606
+GRP_LOG_VALUE   4 vs 5       0.479
+GRP_NINQ        1 vs 4       0.405
+GRP_NINQ        2 vs 4       0.462
+GRP_NINQ        3 vs 4       0.506
+
+
+NOTE: No (additional) effects met the 0.05 significance level for entry into the model.
+
+
+                      Summary of Forward Selection
+ 
+            Effect                   Number         Score
+    Step    Entered            DF        In    Chi-Square    Pr > ChiSq
+
+       1    GRP_LOG_VALUE       4        11       49.2728        <.0001
+       2    GRP_NINQ            3        12       18.9779        0.0003
+
+
+The selected model is the model trained in the last step (Step 2). It consists of the following effects:
+
+Intercept  GRP_INDELINQ  GRP_INDEROG  GRP_JOB  GRP_LOG_CLAGE  GRP_LOG_CLNO  GRP_LOG_DEBTINC  GRP_LOG_DELINQ  GRP_LOG_DEROG  GRP_LOG_LOAN  GRP_LOG_MORTDUE  GRP_LOG_VALUE  GRP_NINQ  
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+   2380.030        1325.369      1054.6613       36         <.0001
+
+
+            Type 3 Analysis of Effects
+ 
+                                 Wald
+Effect               DF    Chi-Square    Pr > ChiSq
+
+GRP_INDELINQ          1       99.1692        <.0001
+GRP_INDEROG           1       31.2848        <.0001
+GRP_JOB               6       32.3522        <.0001
+GRP_LOG_CLAGE         4       59.6932        <.0001
+GRP_LOG_CLNO          4       15.9810        0.0030
+GRP_LOG_DEBTINC       4      318.9665        <.0001
+GRP_LOG_DELINQ        1        1.3137        0.2517
+GRP_LOG_DEROG         1       20.6804        <.0001
+GRP_LOG_LOAN          3        7.9963        0.0461
+GRP_LOG_MORTDUE       4       11.1979        0.0244
+GRP_LOG_VALUE         4       32.9853        <.0001
+GRP_NINQ              3       18.6455        0.0003
+
+
+                       Analysis of Maximum Likelihood Estimates
+ 
+                                       Standard          Wald
+Parameter            DF    Estimate       Error    Chi-Square    Pr > ChiSq    Exp(Est)
+
+Intercept             1     -0.6396      0.2486          6.62        0.0101       0.527
+GRP_INDELINQ    3     1     -0.8778      0.0881         99.17        <.0001       0.416
+GRP_INDEROG     3     1     -0.5528      0.0988         31.28        <.0001       0.575
+GRP_JOB         1     1     -1.5735      0.4554         11.94        0.0006       0.207
+GRP_JOB         2     1      0.2861      0.1607          3.17        0.0750       1.331
+GRP_JOB         3     1      0.0472      0.1956          0.06        0.8094       1.048
+GRP_JOB         4     1     -0.6273      0.2156          8.46        0.0036       0.534
+GRP_JOB         5     1      0.4629      0.2019          5.26        0.0219       1.589
+GRP_JOB         6     1      0.5331      0.3238          2.71        0.0996       1.704
+GRP_LOG_CLAGE   1     1      0.4885      0.4832          1.02        0.3120       1.630
+GRP_LOG_CLAGE   2     1      0.7155      0.1698         17.75        <.0001       2.045
+GRP_LOG_CLAGE   3     1      0.1891      0.1798          1.11        0.2930       1.208
+GRP_LOG_CLAGE   4     1     -0.5372      0.1839          8.53        0.0035       0.584
+GRP_LOG_CLNO    1     1      2.7346      0.7076         14.94        0.0001      15.403
+GRP_LOG_CLNO    2     1     -0.6115      0.2062          8.80        0.0030       0.543
+GRP_LOG_CLNO    3     1     -0.7928      0.2262         12.29        0.0005       0.453
+GRP_LOG_CLNO    4     1     -0.7367      0.2259         10.63        0.0011       0.479
+GRP_LOG_DEBTINC 1     1      2.2103      0.1247        314.10        <.0001       9.118
+GRP_LOG_DEBTINC 2     1     -0.9672      0.1975         23.98        <.0001       0.380
+GRP_LOG_DEBTINC 3     1     -0.9141      0.1862         24.09        <.0001       0.401
+GRP_LOG_DEBTINC 4     1     -0.6210      0.1771         12.30        0.0005       0.537
+GRP_LOG_DELINQ  1     1     -0.2960      0.2582          1.31        0.2517       0.744
+GRP_LOG_DEROG   1     1     -0.9039      0.1988         20.68        <.0001       0.405
+GRP_LOG_LOAN    2     1      0.1639      0.1313          1.56        0.2122       1.178
+GRP_LOG_LOAN    3     1      0.1583      0.1262          1.57        0.2099       1.172
+GRP_LOG_LOAN    4     1      0.0681      0.1337          0.26        0.6108       1.070
+GRP_LOG_MORTDUE 1     1      0.7265      0.2456          8.75        0.0031       2.068
+GRP_LOG_MORTDUE 2     1      0.1946      0.1721          1.28        0.2582       1.215
+GRP_LOG_MORTDUE 3     1     -0.1866      0.1627          1.32        0.2514       0.830
+GRP_LOG_MORTDUE 4     1     -0.4564      0.1771          6.64        0.0100       0.634
+GRP_LOG_VALUE   1     1      3.3668      0.6551         26.41        <.0001      28.987
+GRP_LOG_VALUE   2     1     -0.9023      0.2429         13.79        0.0002       0.406
+GRP_LOG_VALUE   3     1     -0.9104      0.2208         17.00        <.0001       0.402
+GRP_LOG_VALUE   4     1     -1.1449      0.2304         24.70        <.0001       0.318
+GRP_NINQ        1     1     -0.3147      0.1186          7.04        0.0080       0.730
+GRP_NINQ        2     1     -0.1832      0.1338          1.87        0.1709       0.833
+GRP_NINQ        3     1     -0.0914      0.1557          0.34        0.5574       0.913
+
+
+       Odds Ratio Estimates
+                 
+                             Point
+Effect                    Estimate
+
+GRP_INDELINQ    3 vs 4       0.173
+GRP_INDEROG     3 vs 4       0.331
+GRP_JOB         1 vs 7       0.087
+GRP_JOB         2 vs 7       0.557
+GRP_JOB         3 vs 7       0.439
+GRP_JOB         4 vs 7       0.223
+GRP_JOB         5 vs 7       0.665
+GRP_JOB         6 vs 7       0.713
+GRP_LOG_CLAGE   1 vs 5       3.836
+GRP_LOG_CLAGE   2 vs 5       4.814
+GRP_LOG_CLAGE   3 vs 5       2.844
+GRP_LOG_CLAGE   4 vs 5       1.376
+GRP_LOG_CLNO    1 vs 5      27.886
+GRP_LOG_CLNO    2 vs 5       0.982
+GRP_LOG_CLNO    3 vs 5       0.819
+GRP_LOG_CLNO    4 vs 5       0.867
+GRP_LOG_DEBTINC 1 vs 5       6.809
+GRP_LOG_DEBTINC 2 vs 5       0.284
+GRP_LOG_DEBTINC 3 vs 5       0.299
+GRP_LOG_DEBTINC 4 vs 5       0.401
+GRP_LOG_DELINQ  1 vs 3       0.553
+GRP_LOG_DEROG   1 vs 3       0.164
+GRP_LOG_LOAN    2 vs 5       1.740
+GRP_LOG_LOAN    3 vs 5       1.731
+GRP_LOG_LOAN    4 vs 5       1.581
+GRP_LOG_MORTDUE 1 vs 5       2.731
+GRP_LOG_MORTDUE 2 vs 5       1.604
+GRP_LOG_MORTDUE 3 vs 5       1.096
+GRP_LOG_MORTDUE 4 vs 5       0.837
+GRP_LOG_VALUE   1 vs 5      43.645
+GRP_LOG_VALUE   2 vs 5       0.611
+GRP_LOG_VALUE   3 vs 5       0.606
+GRP_LOG_VALUE   4 vs 5       0.479
+GRP_NINQ        1 vs 4       0.405
+GRP_NINQ        2 vs 4       0.462
+GRP_NINQ        3 vs 4       0.506

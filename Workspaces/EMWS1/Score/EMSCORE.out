@@ -1,0 +1,59 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Score Input Variables
+
+                                                                                                  Used in
+Variable                                                                              Variable     Score
+  Name      Role        Creator                   Comment                    Label     Hidden      Code
+
+BAD         TARGET                                                                       N           N   
+CLAGE       INPUT                                                                        Y           Y   
+CLNO        INPUT                                                                        Y           Y   
+DEBTINC     INPUT                                                                        Y           Y   
+DELINQ      INPUT                                                                        Y           Y   
+DEROG       INPUT                                                                        Y           Y   
+JOB         REJECTED               Reg3: Rejected using forward selection                N           Y   
+LOAN        INPUT                                                                        Y           Y   
+MORTDUE     INPUT                                                                        Y           Y   
+NINQ        REJECTED               Reg3: Rejected using forward selection                N           Y   
+VALUE       INPUT                                                                        Y           Y   
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Score Output Variables
+
+Variable Name          Function          Creator    Label
+
+EM_CLASSIFICATION      CLASSIFICATION    Score      Prediction for BAD            
+EM_EVENTPROBABILITY    PREDICT           Score      Probability for level 1 of BAD
+EM_PROBABILITY         PREDICT           Score      Probability of Classification 
+GRP_INDELINQ           TRANSFORM         BINNING    Grouped: INDELINQ             
+GRP_INDEROG            TRANSFORM         BINNING    Grouped: INDEROG              
+GRP_JOB                TRANSFORM         BINNING    Grouped: JOB                  
+GRP_LOG_CLAGE          TRANSFORM         BINNING    Grouped: Transformed CLAGE    
+GRP_LOG_CLNO           TRANSFORM         BINNING    Grouped: Transformed CLNO     
+GRP_LOG_DEBTINC        TRANSFORM         BINNING    Grouped: Transformed DEBTINC  
+GRP_LOG_DELINQ         TRANSFORM         BINNING    Grouped: Transformed DELINQ   
+GRP_LOG_DEROG          TRANSFORM         BINNING    Grouped: Transformed DEROG    
+GRP_LOG_LOAN           TRANSFORM         BINNING    Grouped: Transformed LOAN     
+GRP_LOG_MORTDUE        TRANSFORM         BINNING    Grouped: Transformed MORTDUE  
+GRP_LOG_VALUE          TRANSFORM         BINNING    Grouped: Transformed VALUE    
+GRP_NINQ               TRANSFORM         BINNING    Grouped: NINQ                 
+INDELINQ               TRANSFORM         Trans                                    
+INDEROG                TRANSFORM         Trans                                    
+I_BAD                  CLASSIFICATION    Reg3       Into: BAD                     
+LOG_CLAGE              TRANSFORM         Trans      Transformed CLAGE             
+LOG_CLNO               TRANSFORM         Trans      Transformed CLNO              
+LOG_DEBTINC            TRANSFORM         Trans      Transformed DEBTINC           
+LOG_DELINQ             TRANSFORM         Trans      Transformed DELINQ            
+LOG_DEROG              TRANSFORM         Trans      Transformed DEROG             
+LOG_LOAN               TRANSFORM         Trans      Transformed LOAN              
+LOG_MORTDUE            TRANSFORM         Trans      Transformed MORTDUE           
+LOG_VALUE              TRANSFORM         Trans      Transformed VALUE             
+P_BAD0                 PREDICT           Reg3       Predicted: BAD=0              
+P_BAD1                 PREDICT           Reg3       Predicted: BAD=1              
+U_BAD                  CLASSIFICATION    Reg3       Unnormalized Into: BAD        
+_WARN_                 ASSESS            Reg3       Warnings                      

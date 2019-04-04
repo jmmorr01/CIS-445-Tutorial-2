@@ -1,0 +1,72 @@
+*------------------------------------------------------------*
+User:                jmmorr01
+Date:                October 26, 2018
+Time:                00:10:03
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+          Measurement    Frequency
+ Role        Level         Count
+ 
+INPUT      BINARY             1
+INPUT      INTERVAL          10
+INPUT      NOMINAL            1
+TARGET     BINARY             1
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+Imputation Summary
+Number Of Observations
+ 
+                                                                                                    Number of
+Variable    Impute    Imputed        Indicator                             Measurement                Missing
+  Name      Method    Variable       Variable     Impute Value    Role        Level       Label     for TRAIN
+ 
+CLAGE       MEAN      IMP_CLAGE      M_CLAGE      182.51421356    INPUT     INTERVAL                      127
+CLNO        MEAN      IMP_CLNO       M_CLNO       21.216440752    INPUT     INTERVAL                       95
+DEBTINC     MEAN      IMP_DEBTINC    M_DEBTINC    33.907492422    INPUT     INTERVAL                      484
+DELINQ      MEAN      IMP_DELINQ     M_DELINQ     0.4679069767    INPUT     INTERVAL                      232
+DEROG       MEAN      IMP_DEROG      M_DEROG      0.2433460076    INPUT     INTERVAL                      278
+JOB         COUNT     IMP_JOB        M_JOB        Other           INPUT     NOMINAL                       108
+MORTDUE     MEAN      IMP_MORTDUE    M_MORTDUE    73215.742741    INPUT     INTERVAL                      197
+NINQ        MEAN      IMP_NINQ       M_NINQ       1.1503208066    INPUT     INTERVAL                      200
+REASON      COUNT     IMP_REASON     M_REASON     DebtCon         INPUT     BINARY                        105
+VALUE       MEAN      IMP_VALUE      M_VALUE      102461.00508    INPUT     INTERVAL                       48
+YOJ         MEAN      IMP_YOJ        M_YOJ        8.8810123683    INPUT     INTERVAL                      199
+ 
+ 
+ 
+ 
+Variable Distribution Training Data
+ 
+        Number of
+          Missing    Number of    Percent of
+Obs     for TRAIN    Variables     Variables
+ 
+  1           484        1          9.09091
+  2           278        1          9.09091
+  3           232        1          9.09091
+  4           200        1          9.09091
+  5           199        1          9.09091
+  6           197        1          9.09091
+  7           127        1          9.09091
+  8           108        1          9.09091
+  9           105        1          9.09091
+ 10            95        1          9.09091
+ 11            48        1          9.09091

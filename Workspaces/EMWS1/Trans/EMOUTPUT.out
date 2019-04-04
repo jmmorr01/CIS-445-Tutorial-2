@@ -1,0 +1,59 @@
+*------------------------------------------------------------*
+User:                jmmorr01
+Date:                October 25, 2018
+Time:                23:41:30
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+          Measurement    Frequency
+ Role        Level         Count
+ 
+INPUT      BINARY             1
+INPUT      INTERVAL          10
+INPUT      NOMINAL            1
+TARGET     BINARY             1
+ 
+ 
+ 
+Computed Transformations
+(maximum 500 observations printed)
+ 
+Input                Input
+Name       Role      Level      Name            Level           Formula
+ 
+CLAGE      INPUT    INTERVAL    LOG_CLAGE      INTERVAL    log(CLAGE  + 1)
+CLNO       INPUT    INTERVAL    LOG_CLNO       INTERVAL    log(CLNO  + 1)
+DEBTINC    INPUT    INTERVAL    LOG_DEBTINC    INTERVAL    log(DEBTINC  + 1)
+DELINQ     INPUT    INTERVAL    LOG_DELINQ     INTERVAL    log(DELINQ  + 1)
+DEROG      INPUT    INTERVAL    LOG_DEROG      INTERVAL    log(DEROG  + 1)
+LOAN       INPUT    INTERVAL    LOG_LOAN       INTERVAL    log(LOAN  + 1)
+MORTDUE    INPUT    INTERVAL    LOG_MORTDUE    INTERVAL    log(MORTDUE  + 1)
+VALUE      INPUT    INTERVAL    LOG_VALUE      INTERVAL    log(VALUE  + 1)
+YOJ        INPUT    INTERVAL    LOG_YOJ        INTERVAL    log(YOJ  + 1)
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+Formula Transformations
+(maximum 500 observations printed)
+ 
+Variable             Measurement
+  Name      Role        Level        Formula
+ 
+INDELINQ    INPUT     INTERVAL      DELINQ > 0
+INDEROG     INPUT     INTERVAL      DEROG > 0
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

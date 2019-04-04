@@ -1,0 +1,11 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+Formula Transformations
+(maximum 500 observations printed)
+
+Variable             Measurement
+  Name      Role        Level        Formula
+
+INDELINQ    INPUT     INTERVAL      DELINQ > 0
+INDEROG     INPUT     INTERVAL      DEROG > 0 

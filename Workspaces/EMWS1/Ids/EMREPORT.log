@@ -1,0 +1,370 @@
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   call symput('NLDATE', strip(put(date(), NLDATE.)));
+MPRINT(EM_DIAGRAM):   call symput('NLTIME', strip(put(datetime(), NLTIME.)));
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   nldate= sasmsg("sashelp.dmine", "log_date_note", 'N', "October 25, 2018" );
+MPRINT(EM_DIAGRAM):   nltime= sasmsg("sashelp.dmine", "log_time_note", 'N', "23:26:25" );
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Report Log";
+MPRINT(EM_DIAGRAM):   put nldate;
+MPRINT(EM_DIAGRAM):   put nltime;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+*------------------------------------------------------------*
+* Report Log
+Date:                October 25, 2018
+Time:                23:26:25
+*------------------------------------------------------------*
+MPRINT(EM_DIAGRAM):    filename O1VU3GOS "J:\JMMORR01\CIS 445\Tutorial 2\My Project\Workspaces\EMWS1\Ids\EMREPORT.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):   proc printto print=O1VU3GOS new;
+MPRINT(EM_DIAGRAM):   run;
+17859      %EmAdviseStat(EMWS1.Ids_DATA, maxClassLevels=20, metadata=EMWS1.Ids_CMeta_DATA, statisticData=EMWS1.Ids_EMSTAT);
+MPRINT(EM_DIAGRAM):   
+MPRINT(EMADVISESTAT):   proc display c=sashelp.emmeta.advisestatistics.scl;
+MPRINT(EMADVISESTAT):   run;
+
+17860      %let SYSCC = 0;
+*------------------------------------------------------------* 
+Computing data source summary statistics 
+*------------------------------------------------------------* 
+NOTE: View EMWS1.IDS_DATA.VIEW used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+17861      %let EM_ADVISENCOUNT = -1;
+NOTE: View EMWS1.IDS_DATA.VIEW used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+17862      %let _GridFlag = 0;
+17863      %hpdm_performance(data=EMWS1.Ids_DATA, isGrid=_GridFlag);
+MPRINT(EMADVISESTAT):    
+MPRINT(HPDM_PERFORMANCE):  ;
+PERFORMANCE  DETAILS
+MPRINT(EMADVISESTAT):  ;
+17864      proc dmdb data=EMWS1.Ids_DATA(obs=1000000)
+17865      maxlevel = 513
+17866      classout=WORK._CLASSSTAT varout=WORK._VARSTAT;
+MPRINT(EMADVISESTAT):    proc dmdb data=EMWS1.Ids_DATA(obs=1000000) maxlevel = 513 classout=WORK._CLASSSTAT varout=WORK._VARSTAT;
+17867      var
+17868      'CLAGE'n
+17869      'CLNO'n
+17870      'DEBTINC'n
+17871      'DELINQ'n
+17872      'DEROG'n
+17873      'LOAN'n
+17874      'MORTDUE'n
+17875      'NINQ'n
+17876      'VALUE'n
+17877      'YOJ'n
+17878      ;
+MPRINT(EMADVISESTAT):   var 'CLAGE'n 'CLNO'n 'DEBTINC'n 'DELINQ'n 'DEROG'n 'LOAN'n 'MORTDUE'n 'NINQ'n 'VALUE'n 'YOJ'n ;
+17879      class
+17880      'BAD'n
+17881      'JOB'n
+17882      'REASON'n
+17883      ;
+MPRINT(EMADVISESTAT):   class 'BAD'n 'JOB'n 'REASON'n ;
+17884      run;
+MPRINT(EMADVISESTAT):   run;
+
+NOTE: Records processed = 5960   Memory used = 511K.
+NOTE: View EMWS1.IDS_DATA.VIEW used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      
+NOTE: There were 5960 observations read from the data set SAMPSIO.HMEQ.
+NOTE: There were 5960 observations read from the data set EMWS1.IDS_DATA.
+NOTE: The data set WORK._CLASSSTAT has 12 observations and 9 variables.
+NOTE: The data set WORK._VARSTAT has 10 observations and 9 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.06 seconds
+      
+
+17885      proc sort data=WORK._CLASSSTAT;
+MPRINT(EMADVISESTAT):    proc sort data=WORK._CLASSSTAT;
+17886      by NAME;
+MPRINT(EMADVISESTAT):   by NAME;
+17887      run;
+MPRINT(EMADVISESTAT):   run;
+
+NOTE: There were 12 observations read from the data set WORK._CLASSSTAT.
+NOTE: The data set WORK._CLASSSTAT has 12 observations and 9 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+17888      data WORK._CLASSSTAT;
+MPRINT(EMADVISESTAT):   data WORK._CLASSSTAT;
+17889      set WORK._CLASSSTAT end=eof;
+MPRINT(EMADVISESTAT):   set WORK._CLASSSTAT end=eof;
+17890      retain NLEVEL PCTMISS NTOTAL 0;
+MPRINT(EMADVISESTAT):   retain NLEVEL PCTMISS NTOTAL 0;
+17891      KEEP NAME TYPE NLEVEL PCTMISS;
+MPRINT(EMADVISESTAT):   KEEP NAME TYPE NLEVEL PCTMISS;
+17892      by NAME;
+MPRINT(EMADVISESTAT):   by NAME;
+17893      if first.NAME then do;
+MPRINT(EMADVISESTAT):   if first.NAME then do;
+17894      NTOTAL = frequency;
+MPRINT(EMADVISESTAT):   NTOTAL = frequency;
+17895      if LEVEL in('', '.') and CRAW eq '' and NRAW=. then do;
+MPRINT(EMADVISESTAT):   if LEVEL in('', '.') and CRAW eq '' and NRAW=. then do;
+17896      PCTMISS=FREQPERCENT;
+MPRINT(EMADVISESTAT):   PCTMISS=FREQPERCENT;
+17897      NLEVEL = 0;
+MPRINT(EMADVISESTAT):   NLEVEL = 0;
+17898      end;
+MPRINT(EMADVISESTAT):   end;
+17899      else do;
+MPRINT(EMADVISESTAT):   else do;
+17900      NLEVEL=1;
+MPRINT(EMADVISESTAT):   NLEVEL=1;
+17901      PCTMISS=0;
+MPRINT(EMADVISESTAT):   PCTMISS=0;
+17902      end;
+MPRINT(EMADVISESTAT):   end;
+17903      end;
+MPRINT(EMADVISESTAT):   end;
+17904      else do;
+MPRINT(EMADVISESTAT):   else do;
+17905      NLEVEL + 1;
+MPRINT(EMADVISESTAT):   NLEVEL + 1;
+17906      NTOTAL + FREQUENCY;
+MPRINT(EMADVISESTAT):   NTOTAL + FREQUENCY;
+17907      end;
+MPRINT(EMADVISESTAT):   end;
+17908      if last.NAME then do;
+MPRINT(EMADVISESTAT):   if last.NAME then do;
+17909      if eof then call symput('EM_ADVISENCOUNT', strip(put(ntotal, best.)));
+MPRINT(EMADVISESTAT):   if eof then call symput('EM_ADVISENCOUNT', strip(put(ntotal, best.)));
+17910      output;
+MPRINT(EMADVISESTAT):   output;
+17911      end;
+MPRINT(EMADVISESTAT):   end;
+17912      run;
+MPRINT(EMADVISESTAT):   run;
+
+NOTE: There were 12 observations read from the data set WORK._CLASSSTAT.
+NOTE: The data set WORK._CLASSSTAT has 3 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17913      data WORK._VARSTAT;
+MPRINT(EMADVISESTAT):    data WORK._VARSTAT;
+17914      set WORK._VARSTAT end=eof;
+MPRINT(EMADVISESTAT):   set WORK._VARSTAT end=eof;
+17915      retain TYPE 'N';
+MPRINT(EMADVISESTAT):   retain TYPE 'N';
+17916      PCTMISS = 100*NMISS/(NMISS + N);
+MPRINT(EMADVISESTAT):   PCTMISS = 100*NMISS/(NMISS + N);
+17917      drop N
+17918      ;
+MPRINT(EMADVISESTAT):   drop N ;
+17919      if eof then call symput('EM_ADVISENCOUNT', strip(put(nmiss + n, best.)));
+MPRINT(EMADVISESTAT):   if eof then call symput('EM_ADVISENCOUNT', strip(put(nmiss + n, best.)));
+17920      run;
+MPRINT(EMADVISESTAT):   run;
+
+NOTE: There were 10 observations read from the data set WORK._VARSTAT.
+NOTE: The data set WORK._VARSTAT has 10 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17921      data EMWS1.Ids_EMSTAT;
+MPRINT(EMADVISESTAT):    data EMWS1.Ids_EMSTAT;
+17922      length Name $32 Type $1 nlevel pctmiss min max mean std skewness kurtosis 8;
+MPRINT(EMADVISESTAT):   length Name $32 Type $1 nlevel pctmiss min max mean std skewness kurtosis 8;
+17923      label NAME = "%sysfunc(sasmsg(sashelp.dmine, meta_name_vlabel,  NOQUOTE))" TYPE = "%sysfunc(sasmsg(sashelp.dmine, meta_type_vlabel,  NOQUOTE))" NLEVEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_numcat_vlabel,   NOQUOTE))" PCTMISS =
+17924         "%sysfunc(sasmsg(sashelp.dmine, rpt_pctmissing_vlabel, NOQUOTE))" MIN = "%sysfunc(sasmsg(sashelp.dmine, rpt_minimum_vlabel, NOQUOTE))" MAX = "%sysfunc(sasmsg(sashelp.dmine, rpt_maximum_vlabel, NOQUOTE))" MEAN =
+17925         "%sysfunc(sasmsg(sashelp.dmine, rpt_mean_vlabel,    NOQUOTE))" STD = "%sysfunc(sasmsg(sashelp.dmine, rpt_std_vlabel,     NOQUOTE))" SKEWNESS = "%sysfunc(sasmsg(sashelp.dmine, rpt_skewness_vlabel, NOQUOTE))" KURTOSIS =
+17926         "%sysfunc(sasmsg(sashelp.dmine, rpt_kurtosis_vlabel, NOQUOTE))";
+MPRINT(EMADVISESTAT):   label NAME = "Variable Name" TYPE = "Type" NLEVEL = "Number of Levels" PCTMISS = "Percent Missing" MIN = "Minimum" MAX = "Maximum" MEAN = "Mean" STD = "Standard Deviation" SKEWNESS = "Skewness" KURTOSIS = "Kurtosis";
+17927      format NLEVEL 6.0 PCTMISS MIN MAX MEAN STD SKEWNESS KURTOSIS BEST8.3;
+MPRINT(EMADVISESTAT):   format NLEVEL 6.0 PCTMISS MIN MAX MEAN STD SKEWNESS KURTOSIS BEST8.3;
+17928      set WORK._VARSTAT WORK._CLASSSTAT;
+MPRINT(EMADVISESTAT):   set WORK._VARSTAT WORK._CLASSSTAT;
+17929      drop NMISS;
+MPRINT(EMADVISESTAT):   drop NMISS;
+17930      run;
+MPRINT(EMADVISESTAT):   run;
+
+NOTE: There were 10 observations read from the data set WORK._VARSTAT.
+NOTE: There were 3 observations read from the data set WORK._CLASSSTAT.
+NOTE: The data set EMWS1.IDS_EMSTAT has 13 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.15 seconds
+      cpu time            0.03 seconds
+      
+
+17931      proc sort data=EMWS1.Ids_EMSTAT;
+MPRINT(EMADVISESTAT):   proc sort data=EMWS1.Ids_EMSTAT;
+17932      by NAME;
+MPRINT(EMADVISESTAT):   by NAME;
+17933      run;
+MPRINT(EMADVISESTAT):   run;
+
+NOTE: There were 13 observations read from the data set EMWS1.IDS_EMSTAT.
+NOTE: The data set EMWS1.IDS_EMSTAT has 13 observations and 10 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.04 seconds
+      
+
+17934      proc sort data=WORK.M3R52L4O;
+MPRINT(EMADVISESTAT):    proc sort data=WORK.M3R52L4O;
+17935      by NAME;
+MPRINT(EMADVISESTAT):   by NAME;
+17936      run;
+MPRINT(EMADVISESTAT):   run;
+
+NOTE: There were 13 observations read from the data set WORK.M3R52L4O.
+NOTE: The data set WORK.M3R52L4O has 13 observations and 20 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17937      data WORK.M3R52L4O;
+MPRINT(EMADVISESTAT):   data WORK.M3R52L4O;
+17938      merge WORK.M3R52L4O EMWS1.Ids_EMSTAT;
+MPRINT(EMADVISESTAT):   merge WORK.M3R52L4O EMWS1.Ids_EMSTAT;
+17939      by NAME;
+MPRINT(EMADVISESTAT):   by NAME;
+17940      if FORMATTYPE in("DATE", "DATETIME", "TIME") then do;
+MPRINT(EMADVISESTAT):   if FORMATTYPE in("DATE", "DATETIME", "TIME") then do;
+17941      MEAN=.;
+MPRINT(EMADVISESTAT):   MEAN=.;
+17942      MIN=.;
+MPRINT(EMADVISESTAT):   MIN=.;
+17943      MAX=.;
+MPRINT(EMADVISESTAT):   MAX=.;
+17944      STD=.;
+MPRINT(EMADVISESTAT):   STD=.;
+17945      SKEWNESS=.;
+MPRINT(EMADVISESTAT):   SKEWNESS=.;
+17946      KURTOSIS=.;
+MPRINT(EMADVISESTAT):   KURTOSIS=.;
+17947      end;
+MPRINT(EMADVISESTAT):   end;
+17948      else if ROLE = 'ID' then do;
+MPRINT(EMADVISESTAT):   else if ROLE = 'ID' then do;
+17949      MEAN=.;
+MPRINT(EMADVISESTAT):   MEAN=.;
+17950      STD=.;
+MPRINT(EMADVISESTAT):   STD=.;
+17951      SKEWNESS=.;
+MPRINT(EMADVISESTAT):   SKEWNESS=.;
+17952      KURTOSIS=.;
+MPRINT(EMADVISESTAT):   KURTOSIS=.;
+17953      end;
+MPRINT(EMADVISESTAT):   end;
+17954      if NLEVEL = 1 then LEVEL='UNARY';
+MPRINT(EMADVISESTAT):   if NLEVEL = 1 then LEVEL='UNARY';
+17955      else if NLEVEL = 2 then LEVEL='BINARY';
+MPRINT(EMADVISESTAT):   else if NLEVEL = 2 then LEVEL='BINARY';
+17956      else if NLEVEL > 2 then LEVEL='NOMINAL';
+MPRINT(EMADVISESTAT):   else if NLEVEL > 2 then LEVEL='NOMINAL';
+17957      run;
+MPRINT(EMADVISESTAT):   run;
+
+NOTE: There were 13 observations read from the data set WORK.M3R52L4O.
+NOTE: There were 13 observations read from the data set EMWS1.IDS_EMSTAT.
+NOTE: The data set WORK.M3R52L4O has 13 observations and 28 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+17958      data EMWS1.Ids_CMeta_DATA;
+MPRINT(EMADVISESTAT):    data EMWS1.Ids_CMeta_DATA;
+17959      set WORK.M3R52L4O;
+MPRINT(EMADVISESTAT):   set WORK.M3R52L4O;
+17960      run;
+MPRINT(EMADVISESTAT):   run;
+
+NOTE: There were 13 observations read from the data set WORK.M3R52L4O.
+NOTE: The data set EMWS1.IDS_CMETA_DATA has 13 observations and 28 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: PROCEDURE DISPLAY used (Total process time):
+      real time           0.87 seconds
+      cpu time            0.54 seconds
+      
+
+MPRINT(EMADVISESTAT):   
+MPRINT(EM_DIAGRAM):  ;
+17961      proc sort data=EMWS1.Ids_EMSTAT;
+MPRINT(EM_DIAGRAM):   proc sort data=EMWS1.Ids_EMSTAT;
+17962      by NAME;
+MPRINT(EM_DIAGRAM):   by NAME;
+17963      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: Input data set is already sorted, no sorting done.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+17964      proc sort data=EMWS1.Ids_CMeta_DATA;
+MPRINT(EM_DIAGRAM):   proc sort data=EMWS1.Ids_CMeta_DATA;
+17965      by NAME;
+MPRINT(EM_DIAGRAM):   by NAME;
+17966      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 13 observations read from the data set EMWS1.IDS_CMETA_DATA.
+NOTE: The data set EMWS1.IDS_CMETA_DATA has 13 observations and 28 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.13 seconds
+      cpu time            0.00 seconds
+      
+
+17967      data EMWS1.Ids_CMeta_DATA;
+MPRINT(EM_DIAGRAM):    data EMWS1.Ids_CMeta_DATA;
+17968      set EMWS1.Ids_CMeta_DATA;
+MPRINT(EM_DIAGRAM):   set EMWS1.Ids_CMeta_DATA;
+17969      drop nlevel pctmiss min max mean std skewness kurtosis;
+MPRINT(EM_DIAGRAM):   drop nlevel pctmiss min max mean std skewness kurtosis;
+17970      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 13 observations read from the data set EMWS1.IDS_CMETA_DATA.
+NOTE: The data set EMWS1.IDS_CMETA_DATA has 13 observations and 20 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.01 seconds
+      
+
+17971      data EMWS1.Ids_EMSTAT;
+MPRINT(EM_DIAGRAM):   data EMWS1.Ids_EMSTAT;
+17972      merge EMWS1.Ids_CMeta_DATA(keep=NAME TYPE LEVEL ROLE) EMWS1.Ids_EMSTAT;
+MPRINT(EM_DIAGRAM):   merge EMWS1.Ids_CMeta_DATA(keep=NAME TYPE LEVEL ROLE) EMWS1.Ids_EMSTAT;
+17973      label LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel,     NOQUOTE))" ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel,      NOQUOTE))";
+MPRINT(EM_DIAGRAM):   label LEVEL = "Measurement Level" ROLE = "Role";
+17974      by NAME;
+MPRINT(EM_DIAGRAM):   by NAME;
+17975      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 13 observations read from the data set EMWS1.IDS_CMETA_DATA.
+NOTE: There were 13 observations read from the data set EMWS1.IDS_EMSTAT.
+NOTE: The data set EMWS1.IDS_EMSTAT has 13 observations and 12 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.01 seconds
+      
+
+MPRINT(EM_DIAGRAM):    proc printto;
+MPRINT(EM_DIAGRAM):   run;

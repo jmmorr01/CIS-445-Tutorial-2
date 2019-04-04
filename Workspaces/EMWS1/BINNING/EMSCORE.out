@@ -1,0 +1,20 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+                         Gini       Level for     Calculated      New                                           Gini
+Obs    Variable       Statistic    Interactive       Role        Role       Level             Label           Ordering
+
+  1    LOG_DEBTINC      63.484      INTERVAL       Input        Default    INTERVAL    Transformed DEBTINC        1   
+  2    LOG_CLAGE        27.595      INTERVAL       Input        Default    INTERVAL    Transformed CLAGE          2   
+  3    LOG_VALUE        23.189      INTERVAL       Input        Default    INTERVAL    Transformed VALUE          3   
+  4    NINQ             21.369      INTERVAL       Input        Default    INTERVAL                               4   
+  5    JOB              17.269      NOMINAL        Rejected     Default    NOMINAL                                5   
+  6    LOG_MORTDUE      12.815      INTERVAL       Rejected     Default    INTERVAL    Transformed MORTDUE        6   
+  7    LOG_LOAN         11.203      INTERVAL       Rejected     Default    INTERVAL    Transformed LOAN           7   
+  8    LOG_CLNO         10.506      INTERVAL       Rejected     Default    INTERVAL    Transformed CLNO           8   
+  9    LOG_YOJ           9.877      INTERVAL       Rejected     Default    INTERVAL    Transformed YOJ            9   
+ 10    REASON            6.493      BINARY         Rejected     Default    BINARY                                10   
+ 11    LOG_DEROG         2.219      INTERVAL       Rejected     Default    INTERVAL    Transformed DEROG         11   
+ 12    LOG_DELINQ        1.384      INTERVAL       Rejected     Default    INTERVAL    Transformed DELINQ        12   
+ 13    INDELINQ          0.000      INTERVAL       Rejected     Default    INTERVAL                              13   
+ 14    INDEROG           0.000      INTERVAL       Rejected     Default    INTERVAL                              14   

@@ -1,0 +1,20 @@
+if ROLE in('INPUT', 'REJECTED') then do;
+if upcase(NAME) in(
+'GRP_INDELINQ'
+'GRP_INDEROG'
+'GRP_JOB'
+'GRP_LOG_CLAGE'
+'GRP_LOG_CLNO'
+'GRP_LOG_DEBTINC'
+'GRP_LOG_DELINQ'
+'GRP_LOG_DEROG'
+'GRP_LOG_LOAN'
+'GRP_LOG_MORTDUE'
+'GRP_LOG_VALUE'
+'GRP_NINQ'
+) then ROLE='INPUT';
+else do;
+ROLE='REJECTED';
+COMMENT = "Reg3: Rejected using forward selection";
+end;
+end;

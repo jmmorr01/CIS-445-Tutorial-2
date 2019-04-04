@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  MainEffect="Y" TwoFactor="N" Polynomial="N" PolynomialDegree="2" Terms="N" Error="LOGISTIC"
+ LinkFunction="LOGIT" SuppressIntercept="N" InputCoding="DEVIATION" MinResourceUse="N"
+ ModelSelection="FORWARD" SelectionCriterion="DEFAULT" SelectionDefault="N" Sequential="N"
+ SlEntry="0.05" SlStay="0.025" Start="10" Stop="0" Force="0" Hierarchy="CLASS" Rule="NONE"
+ MaxStep="0" StepOutput="N" OptimizationTechnique="DEFAULT" ModelDefaults="Y" MaxIterations="."
+ MaxFunctionCalls="." MaxCPUTime="1 HOUR" ConvDefaults="Y" AbsConvValue="-1.34078E154"
+ AbsFValue="0" AbsFTime="1" AbsGValue="0.00001" AbsGTime="1" AbsXValue="1E-8" AbsXTime="1"
+ FConvValue="0" FConvTimes="1" GConvValue="1E-6" GConvTimes="1" ClParm="N" Covout="N"
+ CovB="N" CorB="N" Simple="N" SuppressOutput="N" Details="N" PrintDesignMatrix="N"
+ SASSPDS="N" Performance="N" ExcludedVariable="REJECT" ForceRun="N" RunAction="Train"
+ Component="Regression" RawCreateTime="1856130400.1" CreateTime="25OCT2018:23:46:40"
+ Interactions="" RunId="cd3fbeb3-d7f9-45bf-b040-506177c8106d" RawLastTimeRun="1856130555.6"
+ RawRunTime="19.861000061" LastTimeRun="25OCT2018:23:49:16" RunTime="0 Hr. 0 Min. 19.86 Sec."
+>
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES/>
+</_ROOT_>
